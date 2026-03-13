@@ -1,4 +1,4 @@
-# Evaluating a Regime Optimized Momentum Strategy
+# Evaluating a Regime Filtered Momentum Strategy
 
 Testing whether a probabilistic market regime filter improves the performance of a 6-month momentum strategy on SPY.
 
@@ -38,7 +38,7 @@ The model outputs probabilities for:
 
 The optimized trading strategy uses the probability of 'bull_calm' as a filter to decide when momentum signals should be trusted.
 
-When a position change is made, a 10 basis points (0.10%) cost is applied to mimic a real world case.
+When the strategy changes position, a 10 basis points (0.10%) cost is applied to approximate realistic trading conditions.
 
 ## Backtest Rules
 
@@ -47,22 +47,31 @@ When a position change is made, a 10 basis points (0.10%) cost is applied to mim
 - Position rules: long or cash
 - Execution assumption: signals are shifted by one day
 
+Signals are computed using information available at day t, and positions are applied at day t + 1.
+
 ## Evaluation Metrics
 
 The following metrics are used to compare the baseline and optimized strategies.
 
+### Performance
 - total return
 - annualized return
+
+### Risk
 - annualized volatility
-- sharpe ratio
 - max drawdown
+
+### Risk-adjusted Performance
+- sharpe ratio
+
+### Strategy Behavior
 - turnover
-- exposure
+- exposure (pct of time invested)
 - number of trades
 
 ## Initial Results
 
-In the initial backtest, using a probabilistic threshold of 0.6 for if the regime is determined to be 'bull_calm', the regime optimized strategy outperformed the baseline momentum strategy on both return and risk adjusted metrics.
+In the initial backtest, using a probabilistic threshold of 0.6 for the 'bull_calm' regime, the regime filtered strategy outperformed the baseline momentum strategy on both return and risk adjusted metrics.
 
 | Metric | Momentum | Filtered |
 |---|---:|---:|
@@ -76,7 +85,7 @@ The results suggest that the regime optimized strategy improves the performance 
 
 ## Threshold Sensitivity
 
-The probbilistic threshold was tested across multiple values: 0.5, 0.6, 0.7, 0.8
+The probabilistic threshold was tested across multiple values: 0.5, 0.6, 0.7, 0.8
 
 The results showed a tradeoff where the lower thresholds resulted in high return and higher exposure, while the higher thresholds reduced drawdown and volatility.
 Ultimately a threshold around 0.5-0.6 produced the strongest Sharpe ratios.
@@ -104,30 +113,8 @@ regime-filtered-momentum/
     └── figures/
 ```
 
+## Possible Future Extensions
 
-
-step1: define baseline strategy - 6 month momentum
-treatment strategy - as baseline but adding regime probability (testing different prob thresholds)
-
-step2: trading rules - signal computed using data up to day n, then trade is executed at next day close
-signal at close(n)
-position active at close(n+1)
-also include a small transaction cost per trade
-
-step3: regime signal
-
-step4: evaluation metrics
-performance - cumulative return and annualized return
-risk - annualized volatility and max drawdown
-risk-adjusted - sharpe ratio, sortino ratio
-strategy behavior - turnover, exposure (% of time invested), avg trade return
-
-step5: statistical analysis
-bootstrap sharpe difference
-
-step6: diagnostic analysis
-what is the momentum performance depending on market regime
-
-step7: sensitivity analysis
-testing different probability thresholds, and different lookbacks for momentum strategy
-
+- testing additional momentum lookback windows
+- applying the framework to other ETFs
+- sensitivity to transaction costs
