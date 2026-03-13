@@ -6,7 +6,7 @@ Testing whether a probabilistic market regime filter improves the performance of
 
 This project evaluates whether adding a probabilistic market regime filter improves the performance of a 6-month momentum trading strategy.
 
-The baseline strategy goes long SPY when its 6-month momentum is positive and otherwise holds cash. The treatment strategy applies the same momentum rule, but only enters the market when the predicted probability of a favorable market regime (`bull_calm`) exceeds a specified threshold.
+The baseline strategy goes long SPY when its 6-month momentum is positive and otherwise holds cash. The treatment strategy applies the same momentum rule, but only enters the market when the predicted probability of a favorable market regime 'bull_calm' exceeds a specified threshold.
 
 The aim is to test whether regime contextual filtering improves return quality, reduces drawdowns, and produces better risk-adjusted performance.
 
@@ -79,7 +79,27 @@ The probbilistic threshold was tested across multiple values: 0.5, 0.6, 0.7, 0.8
 The results showed a tradeoff where the lower thresholds resulted in high return and higher exposure, while the higher thresholds reduced drawdown and volatility.
 Ultimately a threshold around 0.5-0.6 produced the strongest Sharpe ratios.
 
+## Repo Structure
 
+regime-filtered-momentum/
+├── README.md
+├── requirements.txt
+├── .gitignore
+├── notebooks/
+│   ├── 01_strategy_design.ipynb
+│   └── 02_backtest_analysis.ipynb
+├── src/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── data.py
+│   ├── regime.py
+│   ├── signals.py
+│   ├── strategy.py
+│   ├── backtest.py
+│   ├── metrics.py
+│   └── plotting.py
+└── reports/
+    └── figures/
 
 
 
