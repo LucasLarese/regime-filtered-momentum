@@ -1,0 +1,9 @@
+pandas
+numpy
+matplotlib
+scikit-learn
+pandas-datareader
+joblib
+jupyter
+ipykernel
+pyarrow
