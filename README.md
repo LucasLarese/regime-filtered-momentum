@@ -83,6 +83,14 @@ In the initial backtest, using a probabilistic threshold of 0.6 for the 'bull_ca
 
 The results suggest that the regime optimized strategy improves the performance by reducing exposure during periods where the market is unfavorable.
 
+## Comparison with Buying and Holding SPY
+
+While the regime filtered strategy improves substantially upon the baseline momentum strategy, buying and holding SPY seems to remain a strong benchmark.
+
+This can be expected given the strong long-term upward trend of the US equity market over the period sampled in this project (2005-present). The baseline momentum strategy frequently exits the market during short term pullbacks, which can cause it to miss portions of sustained bull markets.
+
+However, the regime filtered strategy demonstrates meaningful improvements in comparison to the baseline momentum strategy with a higher annalized return, higher Sharpe ratio and lower volatility. This signals that the regime filter improves the quality of the momentum signal by reducing exposure during unfavorable market trends while still investing during strong market trends.
+
 ## Threshold Sensitivity
 
 The probabilistic threshold was tested across multiple values: 0.5, 0.6, 0.7, 0.8
