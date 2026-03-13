@@ -38,6 +38,8 @@ The model outputs probabilities for:
 
 The optimized trading strategy uses the probability of 'bull_calm' as a filter to decide when momentum signals should be trusted.
 
+When a position change is made, a 10 basis points (0.10%) cost is applied to mimic a real world case.
+
 ## Backtest Rules
 
 - Sample start: 2005
