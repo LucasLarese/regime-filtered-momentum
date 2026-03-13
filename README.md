@@ -80,7 +80,7 @@ The results showed a tradeoff where the lower thresholds resulted in high return
 Ultimately a threshold around 0.5-0.6 produced the strongest Sharpe ratios.
 
 ## Repo Structure
-
+```text
 regime-filtered-momentum/
 ├── README.md
 ├── requirements.txt
@@ -100,6 +100,7 @@ regime-filtered-momentum/
 │   └── plotting.py
 └── reports/
     └── figures/
+```
 
 
 
