@@ -1,4 +1,4 @@
-# Evaluating a Regime-Filtered Momentum Strategy
+# Evaluating a Regime Optimized Momentum Strategy
 
 Testing whether a probabilistic market regime filter improves the performance of a 6-month momentum strategy on SPY.
 
